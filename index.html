@@ -19,19 +19,59 @@
 <body>
   <div id="app"></div>
   <script>
-    
-   document.addEventListener("DOMContentLoaded", () => {
-    const props = Dos(document.getElementById("app"), {
-        url: "doom.jsdos", // Path to your uploaded DOOM package
-        autoStart: true
-    });
-});
+    const params = new URLSearchParams(location.search);
+    document.addEventListener("DOMContentLoaded", () => {
+      /* eslint-disable max-len */
+      /* eslint-enable max-len */
+      const props = Dos(document.getElementById("app"),
+        {
+          // url: "https://cdn.dos.zone/custom/dos/QB45.jsdos", // qbasic
+          // url: decodeURIComponent("https%3A%2F%2Fcdn.dos.zone%2Fcustom%2Fdos%2Fdoom_dm.jsdos"),
+          // url: decodeURIComponent("https%3A%2F%2Fcdn.dos.zone%2Fcustom%2Fdos%2Fhomm2_netbios.jsdos"),
+          // url: "https://cdn.dos.zone/original/2X/2/24b00b14f118580763440ecaddcc948f8cb94f14.jsdos", // digger
+          // url: "https://cdn.dos.zone/custom/dos/doom.jsdos",
+          // url: "https://cdn.dos.zone/custom/dos/duke3d_ipx.jsdos",
+          // url: "https://br.cdn.dos.zone/ipx/duke3d/duke3d_ipx.jsdos",
+          // url: "https://br.cdn.dos.zone/ipx/doom_dm/doom_dm.jsdos",
+          // url: "https://cdn.dos.zone/original/2X/b/b4b5275904d86a4ab8a20917b2b7e34f0df47bf7.jsdos", // dhry2
+          // url: "https://cdn.dos.zone/original/2X/7/744842062905f72648a4d492ccc2526d039b3702.jsdos", // sim-city
+          // url: "https://cdn.dos.zone/custom/dos/war2.jsdos", // warcraft-2
+          // url: "https://cdn.dos.zone/original/2X/5/5f21f221e023bbca253396824c5f652438eeef8c.jsdos", // поле чудес
+          // url: "https://cdn.dos.zone/custom/dos/homm_2.jsdos",
+          // url: "doom.jsdos",
+          // dosboxConf: `
+          //   [autoexec]
+          //   mount c .
+          //   c:
+          // `,
+          // jsdosConf: {
+          //   "layersConfig": {
+          //     "version": 2,
+          //     "layers": [
+          //       {
+          //         "grid": "honeycomb",
+          //         "title": "Layer#0",
+          //         "controls": [
+          //           {
+          //             "row": 0,
+          //             "column": 0,
+          //             "symbol": "↑",
+          //             "type": "Key",
+          //             "mapTo": [
+          //               265
+          //             ]
+          //           }
+          //         ]
+          //       }
+          //     ]
+          //   }
+          // },
           // dosboxConf: diabloConf,
           // loginUrl: "http://localhost:8080/subscription.html",
           // autoStart: true,
           // kiosk: true,
           // background: "https://dos.zone/images/http/original/2X/f/f833b147609640191342f555d70eb07261f53c03.png/0a94af564ab81a14a27d6a67671e5416.webp",
-          pathPrefix: "emulators/",
+          pathPrefix: "/emulators/",
           ipxBackend: params.get("ipxBackend"),
           room: params.get("room"),
           // ipx: [{
@@ -162,10 +202,6 @@ cd-rom insertion delay=4000
 scaler=none
 
 [autoexec]
-echo off
-imgmount 2 sockdrive wss://sockdrive.js-dos.com:8001 dos.zone diablo_109_c
-imgmount 3 sockdrive wss://sockdrive.js-dos.com:8001 dos.zone diablo_109_d
-boot c:
 `;
   </script>
 </body>
