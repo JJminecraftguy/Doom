@@ -216,13 +216,15 @@ scaler=none
         if (event === "ci-ready") {
           console.log("js-dos version:", props.getVersion());
           window.ci = arg;
-        }
-      },
     });
 
-    window.props = props;
-  });
+function requestPointerLock() {
+      if (app.requestPointerLock) {
+        app.requestPointerLock();
+      }
+    }
 </script>
+
 </body>
 
 </html>
