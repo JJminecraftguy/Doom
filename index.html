@@ -204,25 +204,28 @@ scaler=none
 [autoexec]
 `;
   </script>
-    <script>
+   <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const props = Dos(document.getElementById("app"), {
-      url: "/Doom/doom.jsdos", // Make sure doom.jsdos is in the same directory as your HTML file
-      pathPrefix: "emulators/",
-      autoStart: true, // Ensures automatic startup
-      kiosk: true, // Optional: Makes it full screen without UI
-      onEvent: (event, arg) => {
-        console.log("Event", event, arg);
-        if (event === "ci-ready") {
-          console.log("js-dos version:", props.getVersion());
-          window.ci = arg;
+    const app = document.getElementById("app");
+
+    const props = Dos(app, {
+      url: "/Doom/doom.jsdos", // Ensure the path is correct
+      autoStart: true,
+      kiosk: true, // Helps keep focus on the game
     });
 
-function requestPointerLock() {
+    window.props = props;
+
+    // Pointer lock function
+    function requestPointerLock() {
       if (app.requestPointerLock) {
         app.requestPointerLock();
       }
     }
+
+    // Attempt to lock mouse when clicking inside the game area
+    app.addEventListener("click", requestPointerLock);
+  });
 </script>
 
 </body>
