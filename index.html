@@ -19,25 +19,6 @@
 <body>
   <div id="app"></div>
   <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const props = Dos(document.getElementById("app"), {
-      url: "doom.jsdos", // Make sure doom.jsdos is in the same directory as your HTML file
-      pathPrefix: "emulators/",
-      autoStart: true, // Ensures automatic startup
-      kiosk: true, // Optional: Makes it full screen without UI
-      onEvent: (event, arg) => {
-        console.log("Event", event, arg);
-        if (event === "ci-ready") {
-          console.log("js-dos version:", props.getVersion());
-          window.ci = arg;
-        }
-      },
-    });
-
-    window.props = props;
-  });
-</script>
-  <script>
     const params = new URLSearchParams(location.search);
     document.addEventListener("DOMContentLoaded", () => {
       /* eslint-disable max-len */
@@ -223,6 +204,25 @@ scaler=none
 [autoexec]
 `;
   </script>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const props = Dos(document.getElementById("app"), {
+      url: "doom.jsdos", // Make sure doom.jsdos is in the same directory as your HTML file
+      pathPrefix: "emulators/",
+      autoStart: true, // Ensures automatic startup
+      kiosk: true, // Optional: Makes it full screen without UI
+      onEvent: (event, arg) => {
+        console.log("Event", event, arg);
+        if (event === "ci-ready") {
+          console.log("js-dos version:", props.getVersion());
+          window.ci = arg;
+        }
+      },
+    });
+
+    window.props = props;
+  });
+</script>
 </body>
 
 </html>
